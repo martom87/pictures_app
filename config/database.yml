@@ -1,0 +1,15 @@
+connection: &connection
+  adapter: postgresql
+  encoding: unicode
+  host:     localhost
+  pool: 5
+  username: pictures_app
+  password: password
+
+development:
+  <<: *connection
+  database: pictures_app_development
+
+test: &test
+  <<: *connection
+database: pictures_app_test
