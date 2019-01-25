@@ -8,7 +8,8 @@ Rails.application.configure do
 
   # Do not eager load code on boot.
   config.eager_load = false
-
+  config.action_mailer.delivery_method = :test
+  config.action_mailer.default_url_options = {:host => 'http://localhost:3000'}
   # Show full error reports.
   config.consider_all_requests_local = true
 
@@ -19,7 +20,7 @@ Rails.application.configure do
 
     config.cache_store = :memory_store
     config.public_file_server.headers = {
-      'Cache-Control' => "public, max-age=#{2.days.to_i}"
+        'Cache-Control' => "public, max-age=#{2.days.to_i}"
     }
   else
     config.action_controller.perform_caching = false
