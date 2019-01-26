@@ -34,6 +34,7 @@ gem 'simple_form'
 gem 'turbolinks'
 gem 'uglifier'
 gem 'rails_12factor'
+gem 'stripe'
 
 group :development do
   gem 'better_errors'
