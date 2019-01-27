@@ -12,11 +12,14 @@ class Payment < ApplicationRecord
   end
 
   def process_payment
-    customer = Stripe::Charge.create customer: customer_id,
-                                     amount: 1000,
-                                     description: 'Premium',
-                                     currency: 'PLN'
+    customer = Stripe::Customer.create email: email, card: token
+    Stripe::Charge.create customer: customer.id,
+                          amount: 1000,
+                          description: 'Premium',
+                          currency: 'usd'
 
   end
 
 end
+
+
