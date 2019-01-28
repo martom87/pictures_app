@@ -17,8 +17,8 @@ Rails.application.configure do
       address:              'smtp.sendgrid.net',
       port:                 587,
       domain:               'localhost:3000',
-      user_name:            Rails.application.credentials.dig(:sendgrid, :username),
-      password:             Rails.application.credentials.dig(:sendgrid, :password),
+      user_name:            Rails.application.credentials.dig(:sendgrid, :sengrid_username),
+      password:             Rails.application.credentials.dig(:sendgrid, :sengrid_password),
       authentication:       'plain',
       enable_starttls_auto: true
   }
