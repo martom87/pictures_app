@@ -13,6 +13,16 @@ Rails.application.configure do
   # Show full error reports.
   config.consider_all_requests_local = true
 
+  config.action_mailer.smtp_settings = {
+      address:              'smtp.sendgrid.net',
+      port:                 587,
+      domain:               'localhost:3000',
+      user_name:            Rails.application.credentials.dig(:sendgrid, :username),
+      password:             Rails.application.credentials.dig(:sendgrid, :password),
+      authentication:       'plain',
+      enable_starttls_auto: true
+  }
+
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
   if Rails.root.join('tmp', 'caching-dev.txt').exist?
