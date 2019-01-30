@@ -9,19 +9,6 @@ Rails.application.configure do
   # and those relying on copy on write to perform better.
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = {:host => 'stark-hamlet-59930.herokuapp.com', :protocol => 'https'}
-
-  config.action_mailer.smtp_settings = {
-      :address => 'smtp.sendgrid.net',
-      :port => '587',
-      :authentication => :plain,
-      :user_name => Rails.application.credentials.dig(:sendgrid, :sengird_username),
-      :password => Rails.application.credentials.dig(:sendgrid, :sengrid_password),
-      :domain => 'heroku.com',
-      :enable_starttls_auto => true
-  }
-
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
@@ -29,7 +16,7 @@ Rails.application.configure do
 
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
   # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
-  # config.require_master_key = true
+  config.require_master_key = true
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
@@ -42,6 +29,23 @@ Rails.application.configure do
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
 
+
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.default_url_options = {:host => 'stark-hamlet-59930.herokuapp.com', :protocol => 'https'}
+
+
+  config.action_mailer.smtp_settings = {
+      :address => 'smtp.sendgrid.net',
+      :port => '587',
+      :authentication => :plain,
+      :user_name => Rails.application.credentials.dig(:sendgrid, :sengird_username),
+      :password => Rails.application.credentials.dig(:sendgrid, :sengrid_password),
+      :domain => 'heroku.com',
+      :enable_starttls_auto => true
+  }
+
+
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
@@ -52,7 +56,7 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
   # Store uploaded files on the local file system (see config/storage.yml for options)
-  config.active_storage.service = :local
+  config.active_storage.service = :amazon
 
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
@@ -74,7 +78,7 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "pictures_app_#{Rails.env}"
+  # config.active_job.queue_name_prefix = "photo_app_#{Rails.env}"
 
   config.action_mailer.perform_caching = false
 
