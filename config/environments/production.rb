@@ -12,6 +12,17 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = {:host => 'stark-hamlet-59930.herokuapp.com', :protocol => 'https'}
 
+  config.action_mailer.smtp_settings = {
+      :address => 'smtp.sendgrid.net',
+      :port => '587',
+      :authentication => :plain,
+      :user_name => Rails.application.credentials.dig(:sendgrid, :sengird_username),
+      :password => Rails.application.credentials.dig(:sendgrid, :sengrid_password),
+      :domain => 'heroku.com',
+      :enable_starttls_auto => true
+  }
+
+
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
